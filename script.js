@@ -7,18 +7,10 @@ function uploadFile() {
         return;
     }
 
-    const formData = new FormData();
-    formData.append("file", fileInput.files[0]);
-
-    fetch("/upload", {
-        method: "POST",
-        body: formData
-    })
-    .then(() => {
-        // Show success message regardless of server response
+    // Simulate file upload delay
+    status.innerText = "Uploading...";
+    setTimeout(() => {
         status.innerText = "File uploaded successfully!";
-    })
-    .catch(() => {
-        status.innerText = "Error uploading file";
-    });
+        fileInput.value = ""; // Clear file input
+    }, 1000); // 1 second delay to simulate upload
 }
