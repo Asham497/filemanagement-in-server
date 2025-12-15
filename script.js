@@ -14,7 +14,14 @@ function uploadFile() {
         method: "POST",
         body: formData
     })
-    .then(response => response.text())
-    .then(result => status.innerText = result)
-    .catch(() => status.innerText = "Error uploading file");
+    .then(response => {
+        if (response.ok) {
+            status.innerText = "File uploaded successfully!";
+        } else {
+            status.innerText = "Error uploading file";
+        }
+    })
+    .catch(() => {
+        status.innerText = "Error uploading file";
+    });
 }
